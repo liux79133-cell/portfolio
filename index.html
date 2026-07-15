@@ -189,7 +189,7 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
 #char-svg { width:100%; height:auto; filter:drop-shadow(5px 7px 0 rgba(26,16,8,.14)); }
 #char-body { animation:charFloat 3s ease-in-out infinite; }
 @keyframes charFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
-#char-shadow { animation:shadowPulse 3s ease-in-out infinite; transform-origin:150px 468px; }
+#char-shadow { animation:shadowPulse 3s ease-in-out infinite; transform-origin:150px 478px; }
 @keyframes shadowPulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.78)} }
 .eyelid { transform-box:fill-box; transform-origin:50% 0%; transform:scaleY(0); }
 
@@ -268,150 +268,233 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
 
       <!-- RIGHT: character -->
       <div class="hero-right">
-        <!-- Retro cartoon character — hand-drawn SVG style -->
-        <svg id="char-svg" viewBox="0 0 300 490" xmlns="http://www.w3.org/2000/svg">
+        <!-- Retro cartoon girl character — hand-drawn SVG style -->
+        <svg id="char-svg" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <!-- halftone pattern for shading -->
             <pattern id="ht" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-              <circle cx="3" cy="3" r="1.3" fill="#1a1008" opacity=".22"/>
+              <circle cx="3" cy="3" r="1.2" fill="#1a1008" opacity=".2"/>
             </pattern>
+            <pattern id="ht2" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
+              <circle cx="2.5" cy="2.5" r="1" fill="#1a1008" opacity=".15"/>
+            </pattern>
+            <clipPath id="headClip">
+              <ellipse cx="150" cy="155" rx="76" ry="80"/>
+            </clipPath>
+            <clipPath id="skirtClip">
+              <path d="M70 295 Q80 260 150 260 Q220 260 230 295 L245 420 Q150 440 55 420 Z"/>
+            </clipPath>
           </defs>
 
-          <!-- shadow on ground -->
-          <ellipse id="char-shadow" cx="150" cy="468" rx="62" ry="11" fill="rgba(26,16,8,.18)"/>
+          <!-- ground shadow -->
+          <ellipse id="char-shadow" cx="150" cy="478" rx="65" ry="10" fill="rgba(26,16,8,.15)"/>
 
           <g id="char-body">
 
-            <!-- ── LEGS ── -->
-            <!-- left leg -->
-            <rect x="98" y="330" width="38" height="90" rx="18" fill="#2d6be4"/>
-            <rect x="98" y="330" width="38" height="90" rx="18" fill="url(#ht)"/>
-            <rect x="98" y="330" width="38" height="90" rx="18" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-            <!-- left shoe -->
-            <ellipse cx="117" cy="422" rx="30" ry="14" fill="#1a1008"/>
-            <ellipse cx="113" cy="419" rx="18" ry="8" fill="#3a3028"/>
-            <rect x="87" y="415" width="60" height="16" rx="8" fill="#1a1008"/>
+            <!-- ══ HAIR BACK LAYER (behind head) ══ -->
+            <!-- long hair flowing behind, dark brown -->
+            <path d="M80 140 Q50 200 55 290 Q58 320 70 340 Q80 300 82 260 Q84 200 88 160 Z"
+                  fill="#2c1a0e" stroke="#1a1008" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M220 140 Q250 200 245 290 Q242 320 230 340 Q220 300 218 260 Q216 200 212 160 Z"
+                  fill="#2c1a0e" stroke="#1a1008" stroke-width="3" stroke-linejoin="round"/>
+            <!-- hair mid back -->
+            <path d="M82 260 Q68 310 72 360 Q76 390 85 400 Q90 370 92 330 Q94 295 92 260 Z"
+                  fill="#3d2510" stroke="#1a1008" stroke-width="2.5"/>
+            <path d="M218 260 Q232 310 228 360 Q224 390 215 400 Q210 370 208 330 Q206 295 208 260 Z"
+                  fill="#3d2510" stroke="#1a1008" stroke-width="2.5"/>
+            <!-- hair sheen lines -->
+            <path d="M88 160 Q75 220 78 280" fill="none" stroke="#5a3520" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+            <path d="M212 160 Q225 220 222 280" fill="none" stroke="#5a3520" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+
+            <!-- ══ BODY / DRESS ══ -->
+            <!-- torso -->
+            <rect x="88" y="230" width="124" height="80" rx="20" fill="#8b5cf6"/>
+            <rect x="88" y="230" width="124" height="80" rx="20" fill="url(#ht)"/>
+            <rect x="88" y="230" width="124" height="80" rx="20" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- collar V-neck -->
+            <path d="M128 230 Q150 256 172 230" fill="#f5edd6" stroke="#1a1008" stroke-width="3"/>
+            <!-- dress waistband -->
+            <rect x="84" y="296" width="132" height="14" rx="7" fill="#6d28d9"/>
+            <rect x="84" y="296" width="132" height="14" rx="7" fill="url(#ht)"/>
+            <rect x="84" y="296" width="132" height="14" rx="7" fill="none" stroke="#1a1008" stroke-width="3"/>
+
+            <!-- ══ SKIRT ══ -->
+            <!-- skirt main body — A-line flared -->
+            <path d="M86 305 Q72 340 55 400 Q50 420 60 430 Q120 450 180 450 Q230 450 245 430 Q255 418 248 400 Q230 340 214 305 Z"
+                  fill="#8b5cf6"/>
+            <path d="M86 305 Q72 340 55 400 Q50 420 60 430 Q120 450 180 450 Q230 450 245 430 Q255 418 248 400 Q230 340 214 305 Z"
+                  fill="url(#ht2)"/>
+            <path d="M86 305 Q72 340 55 400 Q50 420 60 430 Q120 450 180 450 Q230 450 245 430 Q255 418 248 400 Q230 340 214 305 Z"
+                  fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- skirt polka dots -->
+            <circle cx="110" cy="355" r="7" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="150" cy="375" r="7" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="190" cy="355" r="7" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="125" cy="408" r="6" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="173" cy="415" r="6" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="88"  cy="398" r="5" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <circle cx="213" cy="398" r="5" fill="#a78bfa" stroke="#1a1008" stroke-width="2"/>
+            <!-- skirt hem ruffles -->
+            <path d="M60 430 Q80 418 100 430 Q120 442 140 430 Q160 418 180 430 Q200 442 220 430 Q238 418 248 430"
+                  fill="none" stroke="#1a1008" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- ══ LEGS & SHOES ══ -->
+            <!-- left leg — white stocking -->
+            <ellipse cx="108" cy="450" rx="20" ry="10" fill="#f5edd6" stroke="#1a1008" stroke-width="3"/>
+            <!-- left mary-jane shoe -->
+            <ellipse cx="108" cy="460" rx="24" ry="11" fill="#e8392a" stroke="#1a1008" stroke-width="3"/>
+            <ellipse cx="103" cy="457" rx="13" ry="6" fill="#c0271a"/>
+            <!-- strap -->
+            <path d="M94 453 Q108 448 122 453" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
 
             <!-- right leg -->
-            <rect x="164" y="330" width="38" height="90" rx="18" fill="#2d6be4"/>
-            <rect x="164" y="330" width="38" height="90" rx="18" fill="url(#ht)"/>
-            <rect x="164" y="330" width="38" height="90" rx="18" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-            <!-- right shoe -->
-            <ellipse cx="183" cy="422" rx="30" ry="14" fill="#1a1008"/>
-            <ellipse cx="179" cy="419" rx="18" ry="8" fill="#3a3028"/>
-            <rect x="153" y="415" width="60" height="16" rx="8" fill="#1a1008"/>
+            <ellipse cx="192" cy="450" rx="20" ry="10" fill="#f5edd6" stroke="#1a1008" stroke-width="3"/>
+            <!-- right mary-jane shoe -->
+            <ellipse cx="192" cy="460" rx="24" ry="11" fill="#e8392a" stroke="#1a1008" stroke-width="3"/>
+            <ellipse cx="187" cy="457" rx="13" ry="6" fill="#c0271a"/>
+            <path d="M178 453 Q192 448 206 453" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
 
-            <!-- leg outlines top -->
-            <rect x="98" y="330" width="38" height="30" rx="0" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-            <rect x="164" y="330" width="38" height="30" rx="0" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- ══ ARMS ══ -->
+            <!-- left arm — relaxed hang -->
+            <path d="M90 240 Q52 270 44 310 Q40 330 52 344" fill="none" stroke="#f5edd6" stroke-width="28" stroke-linecap="round"/>
+            <path d="M90 240 Q52 270 44 310 Q40 330 52 344" fill="none" stroke="url(#ht)" stroke-width="28" stroke-linecap="round"/>
+            <path d="M90 240 Q52 270 44 310 Q40 330 52 344" fill="none" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- left hand -->
+            <circle cx="50" cy="348" r="20" fill="#f5edd6"/>
+            <circle cx="50" cy="348" r="20" fill="url(#ht)" opacity=".5"/>
+            <circle cx="50" cy="348" r="20" fill="none" stroke="#1a1008" stroke-width="3"/>
+            <path d="M38 342 Q50 335 62 342" fill="none" stroke="#1a1008" stroke-width="2" stroke-linecap="round"/>
+            <!-- fingers left -->
+            <ellipse cx="36" cy="332" rx="6" ry="11" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5" transform="rotate(-25 36 332)"/>
+            <ellipse cx="50" cy="328" rx="6" ry="12" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5"/>
+            <ellipse cx="63" cy="332" rx="6" ry="11" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5" transform="rotate(20 63 332)"/>
 
-            <!-- ── BODY ── -->
-            <rect x="74" y="198" width="152" height="148" rx="28" fill="#e8392a"/>
-            <rect x="74" y="198" width="152" height="148" rx="28" fill="url(#ht)"/>
-            <rect x="74" y="198" width="152" height="148" rx="28" fill="none" stroke="#1a1008" stroke-width="4"/>
+            <!-- right arm — raised waving -->
+            <path d="M210 240 Q252 215 264 175 Q270 148 254 134" fill="none" stroke="#f5edd6" stroke-width="28" stroke-linecap="round"/>
+            <path d="M210 240 Q252 215 264 175 Q270 148 254 134" fill="none" stroke="url(#ht)" stroke-width="28" stroke-linecap="round"/>
+            <path d="M210 240 Q252 215 264 175 Q270 148 254 134" fill="none" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- right hand waving -->
+            <circle cx="252" cy="127" r="22" fill="#f5edd6"/>
+            <circle cx="252" cy="127" r="22" fill="url(#ht)" opacity=".5"/>
+            <circle cx="252" cy="127" r="22" fill="none" stroke="#1a1008" stroke-width="3"/>
+            <path d="M240 121 Q252 113 264 121" fill="none" stroke="#1a1008" stroke-width="2" stroke-linecap="round"/>
+            <!-- fingers spread right (waving) -->
+            <ellipse cx="238" cy="108" rx="5.5" ry="12" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5" transform="rotate(-18 238 108)"/>
+            <ellipse cx="252" cy="104" rx="5.5" ry="13" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5"/>
+            <ellipse cx="266" cy="108" rx="5.5" ry="12" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5" transform="rotate(18 266 108)"/>
+            <!-- thumb right -->
+            <ellipse cx="272" cy="122" rx="5" ry="10" fill="#f5edd6" stroke="#1a1008" stroke-width="2.5" transform="rotate(40 272 122)"/>
 
-            <!-- shirt collar / detail -->
-            <path d="M130 198 Q150 222 170 198" fill="#f5edd6" stroke="#1a1008" stroke-width="3"/>
-            <!-- belly button -->
-            <circle cx="150" cy="300" r="6" fill="none" stroke="#1a1008" stroke-width="3"/>
+            <!-- ══ NECK ══ -->
+            <rect x="132" y="200" width="36" height="36" rx="12" fill="#f5edd6"/>
+            <rect x="132" y="200" width="36" height="36" rx="12" fill="url(#ht)" opacity=".5"/>
+            <rect x="132" y="200" width="36" height="36" rx="12" fill="none" stroke="#1a1008" stroke-width="3"/>
 
-            <!-- ── ARMS ── -->
-            <!-- left arm -->
-            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#e8392a" stroke-width="34" stroke-linecap="round"/>
-            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#1a1008" stroke-width="39" stroke-linecap="round" opacity=".0"/>
-            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="url(#ht)" stroke-width="34" stroke-linecap="round"/>
-            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#1a1008" stroke-width="4" stroke-linecap="round" fill-opacity="0"/>
-            <!-- left glove -->
-            <circle cx="36" cy="322" r="24" fill="#f5edd6"/>
-            <circle cx="36" cy="322" r="24" fill="url(#ht)" opacity=".5"/>
-            <circle cx="36" cy="322" r="24" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-            <!-- glove knuckle lines -->
-            <path d="M22 316 Q36 308 50 316" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- thumb -->
-            <ellipse cx="16" cy="332" rx="9" ry="12" fill="#f5edd6" stroke="#1a1008" stroke-width="3" transform="rotate(-30 16 332)"/>
-            <ellipse cx="16" cy="332" rx="9" ry="12" fill="url(#ht)" opacity=".4" transform="rotate(-30 16 332)"/>
-
-            <!-- right arm — raised & waving -->
-            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="#e8392a" stroke-width="34" stroke-linecap="round"/>
-            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="url(#ht)" stroke-width="34" stroke-linecap="round"/>
-            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="#1a1008" stroke-width="4" stroke-linecap="round" fill-opacity="0"/>
-            <!-- right glove (waving) -->
-            <circle cx="258" cy="104" r="26" fill="#f5edd6"/>
-            <circle cx="258" cy="104" r="26" fill="url(#ht)" opacity=".5"/>
-            <circle cx="258" cy="104" r="26" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-            <path d="M244 98 Q258 90 272 98" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- fingers spread (waving) -->
-            <ellipse cx="242" cy="82" rx="7" ry="14" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(-20 242 82)"/>
-            <ellipse cx="258" cy="78" rx="7" ry="15" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(0 258 78)"/>
-            <ellipse cx="274" cy="82" rx="7" ry="14" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(20 274 82)"/>
-            <!-- halftone on fingers -->
-            <ellipse cx="242" cy="82" rx="7" ry="14" fill="url(#ht)" opacity=".4" transform="rotate(-20 242 82)"/>
-            <ellipse cx="258" cy="78" rx="7" ry="15" fill="url(#ht)" opacity=".4"/>
-            <ellipse cx="274" cy="82" rx="7" ry="14" fill="url(#ht)" opacity=".4" transform="rotate(20 274 82)"/>
-
-            <!-- ── NECK ── -->
-            <rect x="128" y="168" width="44" height="36" rx="12" fill="#f7c948"/>
-            <rect x="128" y="168" width="44" height="36" rx="12" fill="url(#ht)" opacity=".6"/>
-            <rect x="128" y="168" width="44" height="36" rx="12" fill="none" stroke="#1a1008" stroke-width="3.5"/>
-
-            <!-- ── HEAD ── -->
-            <!-- head base -->
-            <ellipse cx="150" cy="128" rx="80" ry="82" fill="#f7c948"/>
-            <ellipse cx="150" cy="128" rx="80" ry="82" fill="url(#ht)" opacity=".45"/>
-            <ellipse cx="150" cy="128" rx="80" ry="82" fill="none" stroke="#1a1008" stroke-width="4"/>
+            <!-- ══ HEAD ══ -->
+            <ellipse cx="150" cy="155" rx="76" ry="80" fill="#f7c948"/>
+            <ellipse cx="150" cy="155" rx="76" ry="80" fill="url(#ht2)" opacity=".5"/>
+            <ellipse cx="150" cy="155" rx="76" ry="80" fill="none" stroke="#1a1008" stroke-width="4"/>
 
             <!-- cheek blush -->
-            <ellipse cx="96" cy="148" rx="16" ry="10" fill="#f97316" opacity=".35"/>
-            <ellipse cx="204" cy="148" rx="16" ry="10" fill="#f97316" opacity=".35"/>
+            <ellipse cx="100" cy="172" rx="15" ry="9" fill="#f97316" opacity=".35"/>
+            <ellipse cx="200" cy="172" rx="15" ry="9" fill="#f97316" opacity=".35"/>
 
-            <!-- ── EYES ── -->
+            <!-- ══ HAIR FRONT / BANGS ══ -->
+            <!-- main hair top mass -->
+            <path d="M76 140 Q72 90 90 62 Q110 34 150 28 Q190 34 210 62 Q228 90 224 140
+                     Q210 118 198 108 Q178 88 150 85 Q122 88 102 108 Q90 118 76 140 Z"
+                  fill="#2c1a0e" stroke="#1a1008" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- hair sheen top -->
+            <path d="M120 42 Q132 36 150 34" fill="none" stroke="#5a3520" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+            <path d="M108 60 Q118 50 130 46" fill="none" stroke="#5a3520" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+
+            <!-- bangs (front, covering forehead) -->
+            <path d="M76 140 Q82 100 102 92 Q120 120 150 124 Q180 120 198 92 Q218 100 224 140
+                     Q208 130 198 128 Q178 120 150 122 Q122 120 102 128 Q92 130 76 140 Z"
+                  fill="#3d2510" stroke="#1a1008" stroke-width="3"/>
+            <!-- individual bang strands -->
+            <path d="M96 138 Q98 118 106 108 Q110 130 108 140" fill="#2c1a0e" stroke="#1a1008" stroke-width="2"/>
+            <path d="M118 126 Q120 106 128 100 Q130 120 128 130" fill="#2c1a0e" stroke="#1a1008" stroke-width="2"/>
+            <path d="M170 126 Q172 106 178 100 Q182 120 180 130" fill="#2c1a0e" stroke="#1a1008" stroke-width="2"/>
+            <path d="M192 138 Q196 118 200 108 Q206 128 204 140" fill="#2c1a0e" stroke="#1a1008" stroke-width="2"/>
+            <!-- side wisps -->
+            <path d="M76 148 Q64 160 66 178 Q70 170 78 162" fill="#2c1a0e" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M224 148 Q236 160 234 178 Q230 170 222 162" fill="#2c1a0e" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- ══ HAIR BOW / RIBBON ══ -->
+            <!-- bow left wing -->
+            <path d="M90 72 Q70 52 68 38 Q80 32 100 52 Q108 62 106 74 Z"
+                  fill="#e8392a" stroke="#1a1008" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M90 72 Q70 52 68 38 Q80 32 100 52 Q108 62 106 74 Z" fill="url(#ht)" opacity=".5"/>
+            <!-- bow right wing -->
+            <path d="M210 72 Q230 52 232 38 Q220 32 200 52 Q192 62 194 74 Z"
+                  fill="#e8392a" stroke="#1a1008" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M210 72 Q230 52 232 38 Q220 32 200 52 Q192 62 194 74 Z" fill="url(#ht)" opacity=".5"/>
+            <!-- bow tails -->
+            <path d="M96 76 Q82 90 70 100 Q76 88 90 80" fill="#c0271a" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M204 76 Q218 90 230 100 Q224 88 210 80" fill="#c0271a" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- bow center knot -->
+            <ellipse cx="150" cy="74" rx="16" ry="12" fill="#e8392a" stroke="#1a1008" stroke-width="3"/>
+            <ellipse cx="150" cy="74" rx="8" ry="6" fill="#c0271a" stroke="#1a1008" stroke-width="2"/>
+            <!-- bow shine -->
+            <ellipse cx="145" cy="70" rx="4" ry="2.5" fill="rgba(255,255,255,.4)" transform="rotate(-20 145 70)"/>
+
+            <!-- ══ EYES ══ -->
             <!-- left eye white -->
-            <ellipse cx="118" cy="122" rx="22" ry="24" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
+            <ellipse cx="120" cy="155" rx="20" ry="22" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- left iris — big cute -->
+            <circle cx="122" cy="158" r="14" fill="#2d6be4"/>
+            <circle cx="122" cy="158" r="9"  fill="#1a5bc4"/>
+            <circle cx="122" cy="158" r="9"  fill="#1a1008" opacity=".5"/>
             <!-- left pupil -->
-            <circle cx="121" cy="125" r="12" fill="#1a1008"/>
-            <circle cx="125" cy="120" r="5" fill="#fff"/>
-            <circle cx="128" cy="122" r="2.5" fill="#fff" opacity=".7"/>
-            <!-- left eyelid (blink) -->
-            <ellipse class="eyelid" id="lid-l" cx="118" cy="100" rx="22" ry="24" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
+            <circle cx="123" cy="159" r="6" fill="#1a1008"/>
+            <!-- left sparkle -->
+            <circle cx="127" cy="153" r="4.5" fill="#fff"/>
+            <circle cx="132" cy="157" r="2.5" fill="#fff" opacity=".6"/>
+            <!-- left upper lash -->
+            <path d="M101 143 Q120 135 139 143" fill="none" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- lashes -->
+            <line x1="104" y1="145" x2="100" y2="138" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="113" y1="140" x2="111" y2="133" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="122" y1="137" x2="122" y2="130" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="131" y1="140" x2="133" y2="133" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="138" y1="144" x2="142" y2="138" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- left eyelid blink -->
+            <ellipse class="eyelid" id="lid-l" cx="120" cy="137" rx="20" ry="22" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
 
             <!-- right eye white -->
-            <ellipse cx="182" cy="122" rx="22" ry="24" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
-            <!-- right pupil -->
-            <circle cx="185" cy="125" r="12" fill="#1a1008"/>
-            <circle cx="189" cy="120" r="5" fill="#fff"/>
-            <circle cx="192" cy="122" r="2.5" fill="#fff" opacity=".7"/>
-            <!-- right eyelid (blink) -->
-            <ellipse class="eyelid" id="lid-r" cx="182" cy="100" rx="22" ry="24" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
+            <ellipse cx="180" cy="155" rx="20" ry="22" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- right iris -->
+            <circle cx="182" cy="158" r="14" fill="#2d6be4"/>
+            <circle cx="182" cy="158" r="9"  fill="#1a5bc4"/>
+            <circle cx="182" cy="158" r="9"  fill="#1a1008" opacity=".5"/>
+            <circle cx="183" cy="159" r="6" fill="#1a1008"/>
+            <circle cx="187" cy="153" r="4.5" fill="#fff"/>
+            <circle cx="192" cy="157" r="2.5" fill="#fff" opacity=".6"/>
+            <!-- right upper lash -->
+            <path d="M161 143 Q180 135 199 143" fill="none" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="164" y1="145" x2="160" y2="138" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="173" y1="140" x2="171" y2="133" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="182" y1="137" x2="182" y2="130" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="191" y1="140" x2="193" y2="133" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="198" y1="144" x2="202" y2="138" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- right eyelid blink -->
+            <ellipse class="eyelid" id="lid-r" cx="180" cy="137" rx="20" ry="22" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
 
-            <!-- eyebrows -->
-            <path d="M98 98 Q118 88 136 94" fill="none" stroke="#1a1008" stroke-width="5" stroke-linecap="round"/>
-            <path d="M164 94 Q182 88 202 98" fill="none" stroke="#1a1008" stroke-width="5" stroke-linecap="round"/>
+            <!-- eyebrows — arched feminine -->
+            <path d="M100 132 Q120 122 138 126" fill="none" stroke="#2c1a0e" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M162 126 Q180 122 200 132" fill="none" stroke="#2c1a0e" stroke-width="4.5" stroke-linecap="round"/>
 
-            <!-- ── NOSE ── -->
-            <ellipse cx="150" cy="146" rx="8" ry="5" fill="#e8a020" opacity=".6"/>
-            <path d="M144 148 Q150 154 156 148" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- ══ NOSE ══ -->
+            <path d="M144 176 Q150 182 156 176" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
 
-            <!-- ── MOUTH / SMILE ── -->
-            <path d="M120 164 Q150 186 180 164" fill="#fff" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- teeth -->
-            <path d="M131 168 Q150 182 169 168" fill="#fff"/>
-            <line x1="150" y1="168" x2="150" y2="180" stroke="#1a1008" stroke-width="2"/>
-            <path d="M131 168 Q150 182 169 168" fill="none" stroke="#1a1008" stroke-width="2"/>
-
-            <!-- ── HAT ── -->
-            <!-- hat brim -->
-            <ellipse cx="150" cy="56" rx="88" ry="16" fill="#1a1008"/>
-            <ellipse cx="148" cy="54" rx="80" ry="11" fill="#3a3028"/>
-            <!-- hat crown -->
-            <rect x="88" y="0" width="124" height="60" rx="14" fill="#1a1008"/>
-            <rect x="96" y="6" width="108" height="50" rx="10" fill="#2a2018"/>
-            <!-- hat band -->
-            <rect x="88" y="38" width="124" height="18" rx="0" fill="#e8392a"/>
-            <rect x="88" y="38" width="124" height="18" fill="none" stroke="#1a1008" stroke-width="0"/>
-            <!-- hat top outline -->
-            <rect x="88" y="0" width="124" height="60" rx="14" fill="none" stroke="#1a1008" stroke-width="4"/>
-            <!-- hat star badge -->
-            <polygon points="150,10 154,20 166,20 156,27 160,38 150,31 140,38 144,27 134,20 146,20" fill="#f7c948" stroke="#1a1008" stroke-width="2"/>
+            <!-- ══ MOUTH ══ -->
+            <!-- smile -->
+            <path d="M122 192 Q150 214 178 192" fill="#fff" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M134 196 Q150 210 166 196" fill="#f97316" opacity=".4"/>
+            <!-- lip line -->
+            <path d="M134 196 Q150 210 166 196" fill="none" stroke="#1a1008" stroke-width="2"/>
+            <!-- cute little gap -->
+            <line x1="150" y1="196" x2="150" y2="206" stroke="#1a1008" stroke-width="1.8"/>
 
           </g><!-- /char-body -->
         </svg>
@@ -665,13 +748,17 @@ function scheduleCharBlink() {
     const lidL = document.getElementById('lid-l');
     const lidR = document.getElementById('lid-r');
     if (!lidL) return;
-    gsap.to([lidL, lidR], { attr:{ ry:24 }, scaleY:1, duration:.07, transformOrigin:'50% 0%',
-      onComplete: () => {
-        gsap.to([lidL, lidR], { scaleY:0, duration:.1, delay:.05, transformOrigin:'50% 0%',
-          onComplete: scheduleCharBlink
-        });
+    // animate eyelid dropping down (scaleY from top)
+    gsap.fromTo([lidL, lidR],
+      { attr:{ cy: 137 }, scaleY: 0 },
+      { scaleY: 1, duration:.07, transformOrigin:'50% 0%',
+        onComplete: () => {
+          gsap.to([lidL, lidR], { scaleY:0, duration:.1, delay:.06, transformOrigin:'50% 0%',
+            onComplete: scheduleCharBlink
+          });
+        }
       }
-    });
+    );
   }, 2200 + Math.random()*2800);
 }
 
