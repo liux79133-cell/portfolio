@@ -182,6 +182,17 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
 .contact-spiral { position:absolute; width:260px; height:260px; border:5px solid var(--ink); border-radius:50%; top:-80px; right:-80px; opacity:.06; }
 .contact-star { position:absolute; font-size:80px; color:var(--ink); opacity:.05; bottom:40px; left:40px; animation:spin-slow 20s linear infinite; }
 
+/* ══ CHARACTER ══ */
+.hero-split { display:flex; align-items:center; gap:0; padding:30px 72px 30px 80px; max-width:1320px; width:100%; position:relative; z-index:5; }
+.hero-left { flex:1; min-width:0; }
+.hero-right { flex:0 0 auto; width:clamp(240px,30vw,370px); display:flex; align-items:flex-end; justify-content:center; }
+#char-svg { width:100%; height:auto; filter:drop-shadow(5px 7px 0 rgba(26,16,8,.14)); }
+#char-body { animation:charFloat 3s ease-in-out infinite; }
+@keyframes charFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+#char-shadow { animation:shadowPulse 3s ease-in-out infinite; transform-origin:150px 468px; }
+@keyframes shadowPulse { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.78)} }
+.eyelid { transform-box:fill-box; transform-origin:50% 0%; transform:scaleY(0); }
+
 /* anim helpers */
 .fu { opacity:0; transform:translateY(30px); }
 .fr { opacity:0; transform:translateX(-36px); }
@@ -221,9 +232,13 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
   <!-- S1 HERO -->
   <section class="slide zz-bottom" id="s1">
     <div class="halftone"></div>
+
+    <!-- bg decos -->
     <div class="deco deco1"><div class="deco-stripe"></div></div>
     <div class="deco deco2"><div class="deco-donut"></div></div>
     <div class="deco deco3">★</div>
+
+    <!-- starbursts -->
     <div class="starburst sb1">
       <svg viewBox="0 0 110 110" width="110" height="110"><polygon points="55,5 65,40 100,30 78,55 100,80 65,70 55,105 45,70 10,80 32,55 10,30 45,40" fill="#1a1008" opacity=".9"/></svg>
       <div class="starburst-txt" style="color:#f7c948">OPEN<br>FOR<br>WORK</div>
@@ -235,16 +250,174 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
     <div class="starburst sb3">
       <svg viewBox="0 0 60 60" width="60" height="60"><polygon points="30,3 35,22 54,22 39,34 45,53 30,41 15,53 21,34 6,22 25,22" fill="#2d6be4"/></svg>
     </div>
-    <div class="hero-inner">
-      <div class="bubble bub1">Hello there! 👋</div>
-      <div class="hero-label fu">✦ Creative Portfolio ✦</div>
-      <h1 class="hero-name fu">YOUR<span class="outline-txt">NAME</span></h1>
-      <div class="hero-role fu">
-        <span class="role-chip rc1">Designer</span>
-        <span class="role-chip rc2">Developer</span>
-        <span class="role-chip rc3">Creator</span>
+
+    <!-- split layout -->
+    <div class="hero-split">
+
+      <!-- LEFT: text -->
+      <div class="hero-left">
+        <div class="bubble bub1" style="position:relative;top:auto;left:auto;display:inline-block;margin-bottom:16px">Hello there! 👋</div>
+        <div class="hero-label fu">✦ Creative Portfolio ✦</div>
+        <h1 class="hero-name fu">YOUR<span class="outline-txt">NAME</span></h1>
+        <div class="hero-role fu" style="margin-top:22px">
+          <span class="role-chip rc1">Designer</span>
+          <span class="role-chip rc2">Developer</span>
+          <span class="role-chip rc3">Creator</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: character -->
+      <div class="hero-right">
+        <!-- Retro cartoon character — hand-drawn SVG style -->
+        <svg id="char-svg" viewBox="0 0 300 490" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- halftone pattern for shading -->
+            <pattern id="ht" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.3" fill="#1a1008" opacity=".22"/>
+            </pattern>
+          </defs>
+
+          <!-- shadow on ground -->
+          <ellipse id="char-shadow" cx="150" cy="468" rx="62" ry="11" fill="rgba(26,16,8,.18)"/>
+
+          <g id="char-body">
+
+            <!-- ── LEGS ── -->
+            <!-- left leg -->
+            <rect x="98" y="330" width="38" height="90" rx="18" fill="#2d6be4"/>
+            <rect x="98" y="330" width="38" height="90" rx="18" fill="url(#ht)"/>
+            <rect x="98" y="330" width="38" height="90" rx="18" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- left shoe -->
+            <ellipse cx="117" cy="422" rx="30" ry="14" fill="#1a1008"/>
+            <ellipse cx="113" cy="419" rx="18" ry="8" fill="#3a3028"/>
+            <rect x="87" y="415" width="60" height="16" rx="8" fill="#1a1008"/>
+
+            <!-- right leg -->
+            <rect x="164" y="330" width="38" height="90" rx="18" fill="#2d6be4"/>
+            <rect x="164" y="330" width="38" height="90" rx="18" fill="url(#ht)"/>
+            <rect x="164" y="330" width="38" height="90" rx="18" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- right shoe -->
+            <ellipse cx="183" cy="422" rx="30" ry="14" fill="#1a1008"/>
+            <ellipse cx="179" cy="419" rx="18" ry="8" fill="#3a3028"/>
+            <rect x="153" y="415" width="60" height="16" rx="8" fill="#1a1008"/>
+
+            <!-- leg outlines top -->
+            <rect x="98" y="330" width="38" height="30" rx="0" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <rect x="164" y="330" width="38" height="30" rx="0" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+
+            <!-- ── BODY ── -->
+            <rect x="74" y="198" width="152" height="148" rx="28" fill="#e8392a"/>
+            <rect x="74" y="198" width="152" height="148" rx="28" fill="url(#ht)"/>
+            <rect x="74" y="198" width="152" height="148" rx="28" fill="none" stroke="#1a1008" stroke-width="4"/>
+
+            <!-- shirt collar / detail -->
+            <path d="M130 198 Q150 222 170 198" fill="#f5edd6" stroke="#1a1008" stroke-width="3"/>
+            <!-- belly button -->
+            <circle cx="150" cy="300" r="6" fill="none" stroke="#1a1008" stroke-width="3"/>
+
+            <!-- ── ARMS ── -->
+            <!-- left arm -->
+            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#e8392a" stroke-width="34" stroke-linecap="round"/>
+            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#1a1008" stroke-width="39" stroke-linecap="round" opacity=".0"/>
+            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="url(#ht)" stroke-width="34" stroke-linecap="round"/>
+            <path d="M74 220 Q32 240 26 280 Q22 305 38 318" fill="none" stroke="#1a1008" stroke-width="4" stroke-linecap="round" fill-opacity="0"/>
+            <!-- left glove -->
+            <circle cx="36" cy="322" r="24" fill="#f5edd6"/>
+            <circle cx="36" cy="322" r="24" fill="url(#ht)" opacity=".5"/>
+            <circle cx="36" cy="322" r="24" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- glove knuckle lines -->
+            <path d="M22 316 Q36 308 50 316" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- thumb -->
+            <ellipse cx="16" cy="332" rx="9" ry="12" fill="#f5edd6" stroke="#1a1008" stroke-width="3" transform="rotate(-30 16 332)"/>
+            <ellipse cx="16" cy="332" rx="9" ry="12" fill="url(#ht)" opacity=".4" transform="rotate(-30 16 332)"/>
+
+            <!-- right arm — raised & waving -->
+            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="#e8392a" stroke-width="34" stroke-linecap="round"/>
+            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="url(#ht)" stroke-width="34" stroke-linecap="round"/>
+            <path d="M226 215 Q262 190 272 155 Q278 128 260 112" fill="none" stroke="#1a1008" stroke-width="4" stroke-linecap="round" fill-opacity="0"/>
+            <!-- right glove (waving) -->
+            <circle cx="258" cy="104" r="26" fill="#f5edd6"/>
+            <circle cx="258" cy="104" r="26" fill="url(#ht)" opacity=".5"/>
+            <circle cx="258" cy="104" r="26" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+            <path d="M244 98 Q258 90 272 98" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- fingers spread (waving) -->
+            <ellipse cx="242" cy="82" rx="7" ry="14" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(-20 242 82)"/>
+            <ellipse cx="258" cy="78" rx="7" ry="15" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(0 258 78)"/>
+            <ellipse cx="274" cy="82" rx="7" ry="14" fill="#f5edd6" stroke="#1a1008" stroke-width="2.8" transform="rotate(20 274 82)"/>
+            <!-- halftone on fingers -->
+            <ellipse cx="242" cy="82" rx="7" ry="14" fill="url(#ht)" opacity=".4" transform="rotate(-20 242 82)"/>
+            <ellipse cx="258" cy="78" rx="7" ry="15" fill="url(#ht)" opacity=".4"/>
+            <ellipse cx="274" cy="82" rx="7" ry="14" fill="url(#ht)" opacity=".4" transform="rotate(20 274 82)"/>
+
+            <!-- ── NECK ── -->
+            <rect x="128" y="168" width="44" height="36" rx="12" fill="#f7c948"/>
+            <rect x="128" y="168" width="44" height="36" rx="12" fill="url(#ht)" opacity=".6"/>
+            <rect x="128" y="168" width="44" height="36" rx="12" fill="none" stroke="#1a1008" stroke-width="3.5"/>
+
+            <!-- ── HEAD ── -->
+            <!-- head base -->
+            <ellipse cx="150" cy="128" rx="80" ry="82" fill="#f7c948"/>
+            <ellipse cx="150" cy="128" rx="80" ry="82" fill="url(#ht)" opacity=".45"/>
+            <ellipse cx="150" cy="128" rx="80" ry="82" fill="none" stroke="#1a1008" stroke-width="4"/>
+
+            <!-- cheek blush -->
+            <ellipse cx="96" cy="148" rx="16" ry="10" fill="#f97316" opacity=".35"/>
+            <ellipse cx="204" cy="148" rx="16" ry="10" fill="#f97316" opacity=".35"/>
+
+            <!-- ── EYES ── -->
+            <!-- left eye white -->
+            <ellipse cx="118" cy="122" rx="22" ry="24" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- left pupil -->
+            <circle cx="121" cy="125" r="12" fill="#1a1008"/>
+            <circle cx="125" cy="120" r="5" fill="#fff"/>
+            <circle cx="128" cy="122" r="2.5" fill="#fff" opacity=".7"/>
+            <!-- left eyelid (blink) -->
+            <ellipse class="eyelid" id="lid-l" cx="118" cy="100" rx="22" ry="24" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
+
+            <!-- right eye white -->
+            <ellipse cx="182" cy="122" rx="22" ry="24" fill="#fff" stroke="#1a1008" stroke-width="3.5"/>
+            <!-- right pupil -->
+            <circle cx="185" cy="125" r="12" fill="#1a1008"/>
+            <circle cx="189" cy="120" r="5" fill="#fff"/>
+            <circle cx="192" cy="122" r="2.5" fill="#fff" opacity=".7"/>
+            <!-- right eyelid (blink) -->
+            <ellipse class="eyelid" id="lid-r" cx="182" cy="100" rx="22" ry="24" fill="#f7c948" stroke="#1a1008" stroke-width="3.5"/>
+
+            <!-- eyebrows -->
+            <path d="M98 98 Q118 88 136 94" fill="none" stroke="#1a1008" stroke-width="5" stroke-linecap="round"/>
+            <path d="M164 94 Q182 88 202 98" fill="none" stroke="#1a1008" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- ── NOSE ── -->
+            <ellipse cx="150" cy="146" rx="8" ry="5" fill="#e8a020" opacity=".6"/>
+            <path d="M144 148 Q150 154 156 148" fill="none" stroke="#1a1008" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- ── MOUTH / SMILE ── -->
+            <path d="M120 164 Q150 186 180 164" fill="#fff" stroke="#1a1008" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- teeth -->
+            <path d="M131 168 Q150 182 169 168" fill="#fff"/>
+            <line x1="150" y1="168" x2="150" y2="180" stroke="#1a1008" stroke-width="2"/>
+            <path d="M131 168 Q150 182 169 168" fill="none" stroke="#1a1008" stroke-width="2"/>
+
+            <!-- ── HAT ── -->
+            <!-- hat brim -->
+            <ellipse cx="150" cy="56" rx="88" ry="16" fill="#1a1008"/>
+            <ellipse cx="148" cy="54" rx="80" ry="11" fill="#3a3028"/>
+            <!-- hat crown -->
+            <rect x="88" y="0" width="124" height="60" rx="14" fill="#1a1008"/>
+            <rect x="96" y="6" width="108" height="50" rx="10" fill="#2a2018"/>
+            <!-- hat band -->
+            <rect x="88" y="38" width="124" height="18" rx="0" fill="#e8392a"/>
+            <rect x="88" y="38" width="124" height="18" fill="none" stroke="#1a1008" stroke-width="0"/>
+            <!-- hat top outline -->
+            <rect x="88" y="0" width="124" height="60" rx="14" fill="none" stroke="#1a1008" stroke-width="4"/>
+            <!-- hat star badge -->
+            <polygon points="150,10 154,20 166,20 156,27 160,38 150,31 140,38 144,27 134,20 146,20" fill="#f7c948" stroke="#1a1008" stroke-width="2"/>
+
+          </g><!-- /char-body -->
+        </svg>
       </div>
     </div>
+
     <div class="hint-arrow">scroll</div>
   </section>
 
@@ -452,6 +625,10 @@ function enterSlide(slide, idx) {
     gsap.fromTo('.starburst', {scale:0},{scale:1,duration:.5,stagger:.1,delay:.8,ease:'back.out(2)'});
     gsap.fromTo('.deco',      {opacity:0,scale:.6},{opacity:1,scale:1,duration:.5,stagger:.1,delay:.5,ease:'back.out(1.5)'});
     gsap.fromTo('.bubble',    {scale:0,rotation:-12},{scale:1,rotation:-8,duration:.45,delay:1.1,ease:'back.out(2)'});
+    // character entrance
+    gsap.fromTo('#char-svg',  {opacity:0,x:60,scale:.85},{opacity:1,x:0,scale:1,duration:.8,delay:.5,ease:'back.out(1.6)'});
+    // character blink loop
+    scheduleCharBlink();
   }
 
   if(idx===2){
@@ -479,6 +656,24 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowDown'||e.key===' '){ e.preventDefault(); slides[Math.min(current+1,slides.length-1)].scrollIntoView({behavior:'smooth'}); }
   if(e.key==='ArrowUp'){ e.preventDefault(); slides[Math.max(current-1,0)].scrollIntoView({behavior:'smooth'}); }
 });
+
+// ─── CHARACTER BLINK ──────────
+let charBlinkTimer = null;
+function scheduleCharBlink() {
+  clearTimeout(charBlinkTimer);
+  charBlinkTimer = setTimeout(() => {
+    const lidL = document.getElementById('lid-l');
+    const lidR = document.getElementById('lid-r');
+    if (!lidL) return;
+    gsap.to([lidL, lidR], { attr:{ ry:24 }, scaleY:1, duration:.07, transformOrigin:'50% 0%',
+      onComplete: () => {
+        gsap.to([lidL, lidR], { scaleY:0, duration:.1, delay:.05, transformOrigin:'50% 0%',
+          onComplete: scheduleCharBlink
+        });
+      }
+    });
+  }, 2200 + Math.random()*2800);
+}
 
 // ─── KONAMI ───────────────────
 const konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
