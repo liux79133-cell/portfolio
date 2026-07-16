@@ -125,6 +125,8 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
 .sec-eyebrow { font-family:'Permanent Marker',cursive; font-size:12px; color:#fff; background:var(--red); display:inline-block; padding:3px 12px; border:3px solid var(--ink); border-radius:4px; box-shadow:3px 3px 0 var(--ink); margin-bottom:16px; }
 .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(50px,6vw,78px); color:var(--ink); line-height:.9; margin-bottom:24px; -webkit-text-stroke:2px var(--ink); }
 .about-body { font-size:15px; line-height:1.85; color:rgba(26,16,8,.65); margin-bottom:28px; }
+.about-body .en { display:block; font-size:12px; color:rgba(26,16,8,.38); letter-spacing:.5px; margin-top:2px; }
+.sticker .en { display:block; font-size:9px; letter-spacing:.5px; opacity:.6; margin-top:1px; font-family:'Space Grotesk',sans-serif; }
 .sticker-row { display:flex; flex-wrap:wrap; gap:10px; }
 .sticker { font-family:'Permanent Marker',cursive; font-size:13px; padding:6px 16px; border:3px solid var(--ink); border-radius:6px; box-shadow:4px 4px 0 var(--ink); cursor:default; transition:all .15s ease; display:inline-block; }
 .sticker:nth-child(1){background:var(--yellow);transform:rotate(-3deg)}
@@ -132,6 +134,8 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
 .sticker:nth-child(3){background:var(--red);color:#fff;transform:rotate(-1deg)}
 .sticker:nth-child(4){background:var(--green);color:#fff;transform:rotate(3deg)}
 .sticker:nth-child(5){background:var(--purple);color:#fff;transform:rotate(-2deg)}
+.sticker:nth-child(1) .en { color:rgba(26,16,8,.5); }
+.sticker:nth-child(2) .en,.sticker:nth-child(3) .en,.sticker:nth-child(4) .en,.sticker:nth-child(5) .en { color:rgba(255,255,255,.6); }
 .sticker:hover { transform:rotate(0deg) scale(1.1) translateY(-4px) !important; }
 
 /* ══ S3 WORK ══ */
@@ -495,21 +499,26 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--cream); overflow
           <div class="panel-inner">
             <div class="panel-halftone"></div>
             <div class="panel-lines"></div>
-            <div class="panel-init">YN</div>
+            <div class="panel-init">PP</div>
           </div>
           <div class="panel-tag">That's me!</div>
         </div>
       </div>
       <div>
-        <div class="sec-eyebrow fu">Chapter 01</div>
-        <h2 class="sec-title fu">WHO<br>AM I?</h2>
-        <p class="about-body fu">这里放你的自我介绍 — 你是谁，你在做什么，<br>你对什么充满热情。让它真实，让它是你。<br><br>A few sentences about your journey, your vibe, and what makes you you.</p>
+        <div class="sec-eyebrow fu">第一章 · Chapter 01</div>
+        <h2 class="sec-title fu">我是<br>谁？</h2>
+        <p class="about-body fu">
+          这里是刘璇的小空间 🌷<br>
+          <span class="en">Welcome to Tako's little corner of the internet.</span>
+          目前还是一名学生，精力时高时低的普通人，<br>
+          <span class="en">A student, running on variable energy levels —</span>
+          特别特别喜欢小狗狗 🐶<br>
+          <span class="en">and absolutely obsessed with dogs.</span>
+        </p>
         <div class="sticker-row fu">
-          <span class="sticker">Design ✦</span>
-          <span class="sticker">Dev 🖥</span>
-          <span class="sticker">Coffee ☕</span>
-          <span class="sticker">Night Owl 🌙</span>
-          <span class="sticker">你的标签</span>
+          <span class="sticker">Coffee ☕<span class="en">caffeine addict</span></span>
+          <span class="sticker">Sport 🏃<span class="en">when motivated</span></span>
+          <span class="sticker">小狗狗 🐶<span class="en">dog lover</span></span>
         </div>
       </div>
     </div>
